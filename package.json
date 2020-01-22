@@ -1,0 +1,20 @@
+{
+  "name": "speeds-cli",
+  "version": "1.0.0",
+  "description": "快速创建项目",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hook",
+  "license": "ISC",
+  "dependencies": {
+    "boxen": "^4.2.0",
+    "chalk": "^3.0.0",
+    "commander": "^4.1.0",
+    "node-cmd": "^3.0.0",
+    "prompts": "^2.3.0"
+  },
+  "keywords": ["speed","speeds","cli"]
+}
