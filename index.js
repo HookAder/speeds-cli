@@ -3,7 +3,16 @@ const boxen = require('boxen');
 const prompts = require('prompts');
 const program = require('commander');
 const cmd = require('node-cmd');
+const updateNotifier = require('update-notifier');
+const unicons = require("unicons");
+const pkg = require('./package.json');
 const { version,author } = require('./package.json');
+
+
+// 检测更新
+const notifier = updateNotifier({pkg});
+notifier.notify();
+
 
 const cliOptions = {
   title: 'SpeedCli',
@@ -81,19 +90,19 @@ if (program.create) {
     const response = await prompts(questions);
     const { type, name } = response;
     if (type === 1) {
-      console.log(`\n create-react-app ${name}`);
+      console.log(`\n ${unicons.gear} [React Project] ${name}`);
       (async () => {
         await cmd.run(`npx create-react-app ${name}`);
       })()
     } else if (type === 2) {
-      console.log(`\n express-no-view ${name}`);
+      console.log(`\n ${unicons.gear} [Express Project] ${name}`);
       (async () => {
         await cmd.run(`npx express --no-view ${name}`);
       })()
     } else if (type === 3) {
       cmd.get('exit');
     }else {
-      console.log('输入序号有误!');
+      console.log(`${unicons.cross} 输入序号有误!`);
       cmd.get('exit');
     }
   })();

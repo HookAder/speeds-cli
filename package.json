@@ -1,12 +1,13 @@
 {
   "name": "speeds-cli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "快速创建项目",
   "main": "index.js",
   "scripts": {
     "start": "node ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "homepage": "https://github.com/HookAder/speeds-cli",
   "bin": {
     "speeds-cli": "./bin/speeds-cli"
   },
@@ -17,7 +18,9 @@
     "chalk": "^3.0.0",
     "commander": "^4.1.0",
     "node-cmd": "^3.0.0",
-    "prompts": "^2.3.0"
+    "prompts": "^2.3.0",
+    "unicons": "0.0.3",
+    "update-notifier": "^4.0.0"
   },
   "keywords": [
     "speed",
