@@ -3,11 +3,12 @@ const boxen = require('boxen');
 const prompts = require('prompts');
 const program = require('commander');
 const cmd = require('node-cmd');
+const { version,author } = require('./package.json');
 
 const cliOptions = {
   title: 'SpeedCli',
-  version: '1.0.0',
-  author: 'Hook'
+  version,
+  author
 }
 
 const cli_UI = boxen(
