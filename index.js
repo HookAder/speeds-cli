@@ -43,7 +43,7 @@ if (program.debug) console.log(program.opts());
 if (program.info) {
   const info_ui = boxen(
     `${cliOptions.title} v${cliOptions.version}
-by.${cliOptions.author}
+by.Hook
     `,
     {
       margin: 1,
