@@ -30,7 +30,7 @@ const cli_UI = boxen(
     float: 'left'
   }
 );
-console.log(cli_UI);
+console.log(chalk.magentaBright(cli_UI));
 
 program
   .version(`v.${cliOptions.version}`)
@@ -53,16 +53,16 @@ by.Hook
       float: 'left'
     }
   );
-  console.log(info_ui);
+  console.log(chalk.magentaBright(info_ui));
 }
 if (program.create) {
   const list_ui = boxen(
     `${cliOptions.title} v${cliOptions.version}
     -------
     OPTIONS↓
-    1. React Project
-    2. Express Project
-    3. Exit
+    ${chalk.green('1. React Project')}
+    ${chalk.green('2. Express Project')}
+    ${chalk.red('3. Exit')}
     `,
     {
       margin: 1,
@@ -77,7 +77,9 @@ if (program.create) {
     {
       type: 'number',
       name: 'type',
-      message: '请选择序号'
+      message: '请选择序号',
+      min: 1,
+      max: 3
     },
     {
       type: 'text',
@@ -89,20 +91,20 @@ if (program.create) {
   (async () => {
     const response = await prompts(questions);
     const { type, name } = response;
-    if (type === 1) {
-      console.log(`\n ${unicons.gear} [React Project] ${name}`);
+    if (type === 1 && name) {
+      console.log(`\n ${unicons.gear} ${chalk.blue(`[REACT PROJECT] ${name}`)}`);
       (async () => {
         await cmd.run(`npx create-react-app ${name}`);
       })()
-    } else if (type === 2) {
-      console.log(`\n ${unicons.gear} [Express Project] ${name}`);
+    } else if (type === 2 && name) {
+      console.log(`\n ${unicons.gear} ${chalk.blue(`[EXPRESS PROJECT] ${name}`)}`);
       (async () => {
         await cmd.run(`npx express --no-view ${name}`);
       })()
     } else if (type === 3) {
       cmd.get('exit');
     }else {
-      console.log(`${unicons.cross} 输入序号有误!`);
+      console.log(chalk.red(`${unicons.cross} 序号或项目名有错！`));
       cmd.get('exit');
     }
   })();
