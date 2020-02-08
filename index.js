@@ -3,16 +3,13 @@ const boxen = require('boxen');
 const prompts = require('prompts');
 const program = require('commander');
 const cmd = require('node-cmd');
-const updateNotifier = require('update-notifier');
 const unicons = require("unicons");
-const pkg = require('./package.json');
+const update = require('./lib/update');
 const { version,author } = require('./package.json');
-
+const questions = require('./lib/questions');
 
 // 检测更新
-const notifier = updateNotifier({pkg});
-notifier.notify();
-
+update.update();
 
 const cliOptions = {
   title: 'SpeedCli',
@@ -73,20 +70,6 @@ if (program.create) {
     }
   );
   console.log(list_ui);
-  const questions = [
-    {
-      type: 'number',
-      name: 'type',
-      message: '请选择序号',
-      min: 1,
-      max: 3
-    },
-    {
-      type: 'text',
-      name: 'name',
-      message: '项目名'
-    }
-  ];
 
   (async () => {
     const response = await prompts(questions);
